@@ -23,6 +23,7 @@ let profiles = [
 		},
 		weight: 162, // lbs
 		age: 27,
+		image: "example/1.jpeg",
 	}
 ]
 
