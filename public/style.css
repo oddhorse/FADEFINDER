@@ -45,7 +45,7 @@ form {
 .profile-card>.profile-name {
 	margin: 0;
 	padding: var(--padding-amt);
-
+	padding-bottom: calc(var(--padding-amt) * 2);
 	/* https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Images/Using_gradients */
 	background-image: linear-gradient(to bottom, white, #0000);
 	grid-area: 1/1/2/2;
@@ -55,10 +55,11 @@ form {
 
 .profile-card>.profile-stats {
 	padding: var(--padding-amt);
+	padding-top: calc(var(--padding-amt) * 2);
 	grid-area: 2/1/2/2;
 	display: inline;
 	align-self: end;
-	background-image: linear-gradient(to top, white, #0000);
+	background-image: linear-gradient(to top, black, #0000);
 
 }
 
@@ -67,4 +68,5 @@ form {
 .profile-card p {
 	margin: 0;
 	width: 100%;
+	color: white;
 }

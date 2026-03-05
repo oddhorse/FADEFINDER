@@ -24,6 +24,26 @@ let profiles = [
 		weight: 162, // lbs
 		age: 27,
 		image: "example/1.jpeg",
+	},
+	{
+		name: "Danny",
+		height: {
+			ft: 5,
+			in: 10
+		},
+		weight: 162, // lbs
+		age: 27,
+		image: "example/2.jpeg",
+	},
+	{
+		name: "Danny",
+		height: {
+			ft: 5,
+			in: 10
+		},
+		weight: 162, // lbs
+		age: 27,
+		image: "example/3.jpeg",
 	}
 ]
 
