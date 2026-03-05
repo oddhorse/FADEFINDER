@@ -11,7 +11,10 @@
 
 <body>
 	<!-- <%- include("parts/navbar") %> -->
-	<%- include("parts/profile-card", { profile: profiles[0] }) %>
+	<% for(let profile of profiles){ %>
+
+		<%- include("parts/profile-card", { profile: profile }) %>
+			<% } %>
 </body>
 
 </html>

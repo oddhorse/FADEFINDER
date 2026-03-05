@@ -19,32 +19,72 @@ let profiles = [
 		name: "Danny",
 		height: {
 			ft: 5,
-			in: 10
+			in: 9
 		},
-		weight: 162, // lbs
-		age: 27,
+		weight: 155, // lbs
+		age: 29,
 		image: "example/1.jpeg",
 	},
 	{
-		name: "Danny",
+		name: "Nathan",
 		height: {
 			ft: 5,
-			in: 10
+			in: 9
 		},
-		weight: 162, // lbs
-		age: 27,
+		weight: 167, // lbs
+		age: 34,
 		image: "example/2.jpeg",
 	},
 	{
-		name: "Danny",
+		name: "Picard",
 		height: {
 			ft: 5,
-			in: 10
+			in: 6
 		},
-		weight: 162, // lbs
-		age: 27,
+		weight: 143, // lbs
+		age: 42,
 		image: "example/3.jpeg",
-	}
+	},
+	{
+		name: "Astrid",
+		height: {
+			ft: 5,
+			in: 3
+		},
+		weight: 121, // lbs
+		age: 19,
+		image: "example/4.jpeg",
+	},
+	{
+		name: "Kevin",
+		height: {
+			ft: 6,
+			in: 1
+		},
+		weight: 207, // lbs
+		age: 55,
+		image: "example/5.jpeg",
+	},
+	{
+		name: "Jane",
+		height: {
+			ft: 5,
+			in: 5
+		},
+		weight: 140, // lbs
+		age: 53,
+		image: "example/6.jpeg",
+	},
+	{
+		name: "Elle",
+		height: {
+			ft: 5,
+			in: 5
+		},
+		weight: 139, // lbs
+		age: 23,
+		image: "example/7.jpeg",
+	},
 ]
 
 // routes
