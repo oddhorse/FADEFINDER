@@ -31,11 +31,11 @@ form {
 }
 
 .profile-card {
-	width: 200px;
+	width: 240px;
 	aspect-ratio: 4 / 5;
 
-	border: 2px solid #000;
-	border-radius: 3px;
+	/* border: 2px solid #000; */
+	border-radius: 5px;
 
 	/* var for padding of elements */
 	--padding-amt: 10px;
