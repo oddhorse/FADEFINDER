@@ -46,6 +46,14 @@ form {
 	justify-content: stretch;
 
 	cursor: pointer;
+
+	transition:
+		width 150ms,
+		height 150ms;
+}
+
+.profile-card.expanded {
+	width: 500px;
 }
 
 .profile-card:hover {

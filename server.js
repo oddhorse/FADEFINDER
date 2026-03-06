@@ -16,6 +16,7 @@ let posts = []
 
 let profiles = [
 	{
+		id: 0,
 		name: "Danny",
 		height: {
 			ft: 5,
@@ -26,6 +27,7 @@ let profiles = [
 		image: "example/1.jpeg",
 	},
 	{
+		id: 1,
 		name: "Nathan",
 		height: {
 			ft: 5,
@@ -36,6 +38,7 @@ let profiles = [
 		image: "example/2.jpeg",
 	},
 	{
+		id: 2,
 		name: "Picard",
 		height: {
 			ft: 5,
@@ -46,6 +49,7 @@ let profiles = [
 		image: "example/3.jpeg",
 	},
 	{
+		id: 3,
 		name: "Astrid",
 		height: {
 			ft: 5,
@@ -56,6 +60,7 @@ let profiles = [
 		image: "example/4.jpeg",
 	},
 	{
+		id: 4,
 		name: "Kevin",
 		height: {
 			ft: 6,
@@ -66,6 +71,7 @@ let profiles = [
 		image: "example/5.jpeg",
 	},
 	{
+		id: 5,
 		name: "Jane",
 		height: {
 			ft: 5,
@@ -76,6 +82,7 @@ let profiles = [
 		image: "example/6.jpeg",
 	},
 	{
+		id: 6,
 		name: "Elle",
 		height: {
 			ft: 5,
