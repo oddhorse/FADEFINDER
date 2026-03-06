@@ -94,12 +94,26 @@ let profiles = [
 	},
 ]
 
+let fades = [
+	{
+		id: 0,
+		instigator: profiles[0],
+		opponent: profiles[1],
+		time: new Date(),
+		humanTime: new Date().toDateString(),
+		winner: 0,
+	}
+]
+
 // routes
 app.get('/', (req, res) => {
 	res.render('index.ejs', { allPosts: posts })
 })
 app.get('/match', (req, res) => {
 	res.render('match.ejs', { profiles: profiles })
+})
+app.get('/fades', (req, res) => {
+	res.render('fades.ejs', { fades: fades })
 })
 
 // second param on post handler to process file that's uploaded

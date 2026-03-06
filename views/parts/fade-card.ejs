@@ -1,0 +1,14 @@
+<article class="fade-card" data-fadeid="<%= fade.id %>">
+	<img class="profile-image instigator" src="<%= fade.instigator.image %>" alt="profile picture">
+	<img class="profile-image opponent" src="<%= fade.opponent.image %>" alt="profile picture">
+
+	<div class="fade-stats">
+		<h2 class="fade-name">
+			🥊 <%= fade.instigator.name.toUpperCase() %> vs <%= fade.opponent.name.toUpperCase() %>
+		</h2>
+		<p class="fade-time">
+			📆 <%= fade.time.toDateString() %>
+		</p>
+	</div>
+
+</article>
