@@ -107,13 +107,13 @@ let fades = [
 
 // routes
 app.get('/', (req, res) => {
-	res.render('index.ejs', { allPosts: posts })
+	res.render('index.ejs', { allPosts: posts, currentPage: "index" })
 })
 app.get('/match', (req, res) => {
-	res.render('match.ejs', { profiles: profiles })
+	res.render('match.ejs', { profiles: profiles, currentPage: "match" })
 })
 app.get('/fades', (req, res) => {
-	res.render('fades.ejs', { fades: fades })
+	res.render('fades.ejs', { fades: fades, currentPage: "fades" })
 })
 
 // second param on post handler to process file that's uploaded

@@ -1,5 +1,29 @@
 <nav id="navbar">
-	<a href="/match">match</a>
-	<a href="/likes">likes</a>
-	<a href="/fades">fades</a>
+	<a <%=currentPage==="match" ? "href=#" : "href=/match" %>
+		<%=currentPage==="match" ? "aria-current=page" : "" %>
+			>
+			<div>
+				<p class="nav-icon">🤼</p>
+				<p class="nav-text">match</p>
+			</div>
+
+	</a>
+	<a <%=currentPage==="likes" ? "href=#" : "href=/likes" %>
+		<%=currentPage==="likes" ? "aria-current=page" : "" %>
+			>
+			<div>
+				<p class="nav-icon">💞</p>
+				<p class="nav-text">likes</p>
+			</div>
+
+	</a>
+	<a <%=currentPage==="fades" ? "href=#" : "href=/fades" %>
+		<%=currentPage==="fades" ? "aria-current=page" : "" %>
+			>
+			<div>
+				<p class="nav-icon">🥊</p>
+				<p class="nav-text">fades</p>
+			</div>
+
+	</a>
 </nav>
