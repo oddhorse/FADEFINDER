@@ -115,6 +115,24 @@ form section {
 	translate: -50% -50%;
 }
 
+#no-more-profiles-card {
+	flex-direction: column;
+	opacity: 60%;
+}
+
+
+#no-more-profiles-card>h1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-self: center;
+	width: 210px;
+	height: 210px;
+	font-size: 200px;
+	margin: 0;
+
+	opacity: 50%;
+}
 
 .profile-card {
 	width: 240px;

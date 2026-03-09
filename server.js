@@ -118,7 +118,7 @@ let fades = [
 		instigator: profiles.get(0),
 		opponent: profiles.get(1),
 		time: new Date(),
-		humanTime: new Date().toDateString(),
+		loc: "Washington Square Park",
 		winner: 0,
 	}
 ]
