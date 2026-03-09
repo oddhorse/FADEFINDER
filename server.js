@@ -8,6 +8,7 @@ const uploadProcessor = Multer({ dest: 'public/uploads/' }) // uses multer lib t
 
 // middlewareeeee
 app.use(Express.static('public'))
+app.use(Express.json()) // needed for pushing json data in a post request https://www.geeksforgeeks.org/web-tech/express-js-express-json-function/
 app.use(Express.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 
@@ -127,13 +128,24 @@ app.get('/', (req, res) => {
 	res.render('index.ejs', { allPosts: posts, currentPage: "index" })
 })
 app.get('/match', (req, res) => {
-	res.render('match.ejs', { profiles: profiles, getAgeFromDate, currentPage: "match" })
+	const userId = req.query.userId
+	res.render('match.ejs', { userId: userId, profiles: profiles, getAgeFromDate, currentPage: "match" })
 })
 app.get('/likes', (req, res) => {
-	res.render('likes.ejs', { fades: fades, currentPage: "fades" })
+	const userId = req.query.userId
+	let likeProfiles = []
+	if (userId) {
+		const likes = profiles.get(Number(userId)).likes
+
+		for (likeId in likes) {
+			if (profiles.has(likeId)) likeProfiles.push(profiles.get(likeId))
+		}
+	}
+	res.render('likes.ejs', { userId: userId, profiles: likeProfiles, currentPage: "likes" })
 })
 app.get('/fades', (req, res) => {
-	res.render('fades.ejs', { fades: fades, currentPage: "fades" })
+	const userId = req.query.userId
+	res.render('fades.ejs', { userId: userId, fades: fades, currentPage: "fades" })
 })
 
 app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
@@ -165,6 +177,24 @@ app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
 	profiles.set(profiles.size, data)
 
 	res.redirect(`/match?userId=${data.id}`)
+})
+
+app.post('/sendlike', (req, res) => {
+	console.log(req.body)
+	const sender = profiles.get(Number(req.body.senderId))
+	console.log(sender)
+	const recipient = profiles.get(Number(req.body.recipientId))
+	console.log(
+		`like sent by user ${sender.name} (id ${sender.id})
+		for user ${recipient.name} (id ${recipient.id})!`)
+
+	// add sender's id to recipient's likes
+	if (!recipient.likes) recipient.likes = []
+	recipient.likes.push(Number(req.body.senderId))
+
+	console.log(recipient)
+
+	res.send({ "status": "success" })
 })
 
 // listen on port

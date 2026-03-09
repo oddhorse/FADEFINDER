@@ -1,5 +1,5 @@
 <nav id="navbar">
-	<a <%=currentPage==="match" ? "href=#" : "href=/match" %>
+	<a <%=currentPage==="match" ? "href=#" : `href=/match?userId=${userId}` %>
 		<%=currentPage==="match" ? "aria-current=page" : "" %>
 			>
 			<div>
@@ -8,7 +8,7 @@
 			</div>
 
 	</a>
-	<a <%=currentPage==="likes" ? "href=#" : "href=/likes" %>
+	<a <%=currentPage==="likes" ? "href=#" : `href=/likes?userId=${userId}` %>
 		<%=currentPage==="likes" ? "aria-current=page" : "" %>
 			>
 			<div>
@@ -17,7 +17,7 @@
 			</div>
 
 	</a>
-	<a <%=currentPage==="fades" ? "href=#" : "href=/fades" %>
+	<a <%=currentPage==="fades" ? "href=#" : `href=/fades?userId=${userId}` %>
 		<%=currentPage==="fades" ? "aria-current=page" : "" %>
 			>
 			<div>

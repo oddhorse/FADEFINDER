@@ -1,5 +1,14 @@
 :root {
 	font-family: 'Helvetica Neue';
+
+	--card-width: 300px;
+
+	--border-radius: 5px;
+
+	/* var for padding of elements */
+	--card-padding-amt: 10px;
+
+	--hover-trans-time: 60ms;
 }
 
 body {
@@ -93,15 +102,21 @@ form section {
 	translate: 0 -4px;
 }
 
+.card-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+
+	/* width: var(--card-width); */
+}
+
 .profile-card {
 	width: 240px;
 	aspect-ratio: 4 / 5;
 
 	/* border: 2px solid #000; */
-	border-radius: 5px;
-
-	/* var for padding of elements */
-	--padding-amt: 10px;
+	border-radius: var(--border-radius);
 
 	display: grid;
 
@@ -112,15 +127,22 @@ form section {
 
 	transition:
 		width 150ms,
-		height 150ms;
+		height 150ms,
+		scale var(--hover-trans-time);
 }
+
+/* fix width for cards on match page */
+.profile-card.match {
+	width: 300px;
+}
+
 
 .profile-card.expanded {
 	width: 500px;
 }
 
 .profile-card:hover {
-	scale: 105%;
+	scale: 103%;
 }
 
 .profile-card>img.profile-image {
@@ -133,8 +155,8 @@ form section {
 
 .profile-card>.profile-name {
 	margin: 0;
-	padding: var(--padding-amt);
-	padding-bottom: calc(var(--padding-amt) * 2);
+	padding: var(--card-padding-amt);
+	padding-bottom: calc(var(--card-padding-amt) * 2);
 	/* https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Images/Using_gradients */
 	background-image: linear-gradient(to bottom, white, #0000);
 	grid-area: 1/1/2/2;
@@ -143,8 +165,8 @@ form section {
 }
 
 .profile-card>.profile-stats {
-	padding: var(--padding-amt);
-	padding-top: calc(var(--padding-amt) * 2);
+	padding: var(--card-padding-amt);
+	padding-top: calc(var(--card-padding-amt) * 2);
 	grid-area: 2/1/2/2;
 	display: inline;
 	align-self: end;
@@ -160,6 +182,49 @@ form section {
 	color: white;
 }
 
+.like-dislike-btns {
+	display: flex;
+	/* width: var(--card-width); */
+	justify-content: space-between;
+
+}
+
+.like-dislike-btns button {
+	/* width: 50%; */
+	padding: 5px 10px;
+	border: none;
+	cursor: pointer;
+	border-radius: 10px;
+	z-index: 1;
+	font-size: 20px;
+
+	--translate-vert: -15%;
+	--translate-horiz: 30%;
+
+	transition:
+		scale var(--hover-trans-time),
+		rotate var(--hover-trans-time);
+
+	box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+}
+
+.like-dislike-btns button:hover {
+	scale: 120%;
+	rotate: 5deg;
+}
+
+.like-dislike-btns .dislike-btn {
+	background-color: rgb(210, 210, 210);
+	translate: calc(var(--translate-horiz) * -1) var(--translate-vert);
+}
+
+.like-dislike-btns .like-btn {
+	background-color: rgb(255, 0, 0);
+	color: white;
+	translate: var(--translate-horiz) var(--translate-vert);
+}
+
+
 .fade-card {
 	width: 300px;
 	aspect-ratio: 3 / 2;
@@ -168,7 +233,7 @@ form section {
 	border-radius: 5px;
 
 	/* var for padding of elements */
-	--padding-amt: 10px;
+	--card-padding-amt: 10px;
 
 	display: grid;
 
@@ -216,8 +281,8 @@ form section {
 } */
 
 .fade-card>.fade-stats {
-	padding: var(--padding-amt);
-	padding-top: calc(var(--padding-amt) * 2);
+	padding: var(--card-padding-amt);
+	padding-top: calc(var(--card-padding-amt) * 2);
 	grid-area: 2/1/2/3;
 	display: inline;
 	align-self: end;

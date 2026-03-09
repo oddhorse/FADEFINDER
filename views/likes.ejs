@@ -10,13 +10,13 @@
 </head>
 
 <body>
-	<%- include("parts/navbar", {currentPage: currentPage}) %>
+	<%- include("parts/navbar") %>
 		<section id="likes">
 			<h1>likes</h1>
 			<div class="like-scroller">
 				<% for(let profile of profiles){ %>
 
-					<%- include("parts/profile-card", { profile: like }) %>
+					<%- include("parts/profile-card", { profile: profile }) %>
 						<br>
 						<% } %>
 			</div>

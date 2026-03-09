@@ -1,10 +1,9 @@
-window.onload = () => {
+// apparently window.onload only saves one function at a time, while addEventListener can stack. functionally fires at the same time!
+window.addEventListener('load', () => {
 	// get url params
 	let params = new URL(document.location.toString()).searchParams
-	let name = params.get("name")
 
 	// MAKE TYPES OF DATA CARDS EXPANDABLE ON CLICK
-
 	const profileCards = document.getElementsByClassName("profile-card")
 	if (profileCards) {
 		for (const card of profileCards) {
@@ -28,6 +27,7 @@ window.onload = () => {
 	// check if account is already registered and pass that to server
 	const savedUserId = localStorage.getItem("userId")
 	const passedUserId = params.get("userId")
+	console.log(`saved userId: ${savedUserId}, passed userId: ${passedUserId}`)
 	if (savedUserId && !passedUserId) {
 		console.log("saved user id but no passed one! redirecting...")
 		window.location.href += `?userId=${savedUserId}`
@@ -36,4 +36,4 @@ window.onload = () => {
 		console.log("passed user id but no saved one!! saving now...")
 		localStorage.setItem("userId", passedUserId)
 	}
-}
+})

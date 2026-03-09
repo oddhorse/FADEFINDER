@@ -7,15 +7,15 @@
 	<title>FADEFINDER - match</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="main.js"></script>
+	<script src="match.js"></script>
 </head>
 
 <body>
 	<%- include("parts/navbar") %>
 		<% for(let [id, profile] of profiles){ %>
-
-			<%- include("parts/profile-card", { profile: profile }) %>
-				<br>
-				<% } %>
+			<% if (id==userId) { continue } %>
+				<%- include("parts/profile-card", { profile: profile }) %>
+					<% } %>
 </body>
 
 </html>
