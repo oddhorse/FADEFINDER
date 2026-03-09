@@ -12,10 +12,22 @@
 
 <body>
 	<%- include("parts/navbar") %>
+		<h1>match</h1>
 		<% for(let [id, profile] of profiles){ %>
 			<% if (id==userId) { continue } %>
-				<%- include("parts/profile-card", { profile: profile }) %>
-					<% } %>
+				<div class="card-container match" hidden>
+					<%- include("parts/profile-card", { profile: profile }) %>
+
+						<div class="like-dislike-btns" data-userid="<%= profile.id %>">
+							<button class="dislike-btn">🙅‍♂️ pass</button>
+							<button class="like-btn">🥊 scrap</button>
+						</div>
+				</div>
+				<% } %>
+					<div class="card-container" id="no-more-profiles-card" hidden>
+						<h2>no more opponents...</h2>
+						<p>maybe you have some likes?</p>
+					</div>
 </body>
 
 </html>

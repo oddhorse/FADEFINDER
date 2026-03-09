@@ -103,13 +103,16 @@ form section {
 }
 
 .card-container {
+	width: fit-content;
+}
+
+.card-container.match {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	translate: -50% -50%;
-
-	/* width: var(--card-width); */
 }
+
 
 .profile-card {
 	width: 240px;
@@ -205,23 +208,45 @@ form section {
 		scale var(--hover-trans-time),
 		rotate var(--hover-trans-time);
 
+	will-change: scale, rotate;
+
 	box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* different styling for likes page */
+.card-container.likes .like-dislike-btns button {
+	font-size: 17px;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
 }
 
 .like-dislike-btns button:hover {
 	scale: 120%;
-	rotate: 5deg;
 }
 
 .like-dislike-btns .dislike-btn {
-	background-color: rgb(210, 210, 210);
+	/* background-color: rgb(210, 210, 210); */
 	translate: calc(var(--translate-horiz) * -1) var(--translate-vert);
+	rotate: 3deg;
+}
+
+.like-dislike-btns .dislike-btn:hover {
+	rotate: 5deg;
 }
 
 .like-dislike-btns .like-btn {
 	background-color: rgb(255, 0, 0);
 	color: white;
 	translate: var(--translate-horiz) var(--translate-vert);
+	rotate: -3deg;
+}
+
+.like-dislike-btns .like-btn:hover {
+	rotate: -5deg;
+}
+
+.like-scroller {
+	display: flex;
+	gap: 40px;
 }
 
 

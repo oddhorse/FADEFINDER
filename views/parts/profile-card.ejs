@@ -1,23 +1,17 @@
-<div class="card-container" hidden>
-	<article class="profile-card <%= currentPage %>" data-userid="<%= profile.id %>">
-		<img class="profile-image" src="<%= profile.image %>" alt="profile picture">
+<article class="profile-card <%= currentPage %>" data-userid="<%= profile.id %>">
+	<img class="profile-image" src="<%= profile.image %>" alt="profile picture">
 
-		<h1 class="profile-name">
-			<%= profile.name %>
-		</h1>
-		<div class="profile-stats">
+	<h1 class="profile-name">
+		<%= profile.name %>
+	</h1>
+	<div class="profile-stats">
 
-			<p>
-				📏 <%= profile.height.ft %>'<%= profile.height.in %>" ⚖️ <%= profile.weight %> lbs
-			</p>
-			<p>
-				🪪 <%= getAgeFromDate(profile.birthday) %> years old
-			</p>
-		</div>
-
-	</article>
-	<div class="like-dislike-btns" data-userid="<%= profile.id %>">
-		<button class="dislike-btn">🙅‍♂️ pass</button>
-		<button class="like-btn">🥊 scrap</button>
+		<p>
+			📏 <%= profile.height.ft %>'<%= profile.height.in %>" ⚖️ <%= profile.weight %> lbs
+		</p>
+		<p>
+			🪪 <%= getAgeFromDate(profile.birthday) %> years old
+		</p>
 	</div>
-</div>
+
+</article>

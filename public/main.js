@@ -25,15 +25,19 @@ window.addEventListener('load', () => {
 	}
 
 	// check if account is already registered and pass that to server
+	// now this does all reconciliation between localstorage and uri user id
 	const savedUserId = localStorage.getItem("userId")
 	const passedUserId = params.get("userId")
 	console.log(`saved userId: ${savedUserId}, passed userId: ${passedUserId}`)
 	if (savedUserId && !passedUserId) {
 		console.log("saved user id but no passed one! redirecting...")
 		window.location.href += `?userId=${savedUserId}`
-	}
-	if (passedUserId && !savedUserId) {
+	} else if (passedUserId && !savedUserId) {
 		console.log("passed user id but no saved one!! saving now...")
 		localStorage.setItem("userId", passedUserId)
+	} else if (savedUserId && passedUserId) {
+		if (savedUserId !== passedUserId) {
+			localStorage.setItem("userId", passedUserId)
+		}
 	}
 })

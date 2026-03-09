@@ -15,10 +15,15 @@
 			<h1>likes</h1>
 			<div class="like-scroller">
 				<% for(let profile of profiles){ %>
+					<div class="card-container likes">
+						<%- include("parts/profile-card", { profile: profile }) %>
+							<div class="like-dislike-btns" data-userid="<%= profile.id %>">
+								<button class="dislike-btn">🙅‍♂️</button>
+								<button class="like-btn">🥊</button>
+							</div>
+					</div>
 
-					<%- include("parts/profile-card", { profile: profile }) %>
-						<br>
-						<% } %>
+					<% } %>
 			</div>
 
 		</section>

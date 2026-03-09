@@ -129,23 +129,26 @@ app.get('/', (req, res) => {
 })
 app.get('/match', (req, res) => {
 	const userId = req.query.userId
-	res.render('match.ejs', { userId: userId, profiles: profiles, getAgeFromDate, currentPage: "match" })
+	res.render('match.ejs', { userId, profiles, getAgeFromDate, currentPage: "match" })
 })
 app.get('/likes', (req, res) => {
 	const userId = req.query.userId
 	let likeProfiles = []
 	if (userId) {
 		const likes = profiles.get(Number(userId)).likes
-
-		for (likeId in likes) {
-			if (profiles.has(likeId)) likeProfiles.push(profiles.get(likeId))
+		console.log(likes)
+		for (const likeId of likes) {
+			if (profiles.has(likeId)) {
+				console.log(profiles.get(likeId))
+				likeProfiles.push(profiles.get(likeId))
+			}
 		}
 	}
-	res.render('likes.ejs', { userId: userId, profiles: likeProfiles, currentPage: "likes" })
+	res.render('likes.ejs', { userId, profiles: likeProfiles, getAgeFromDate, currentPage: "likes" })
 })
 app.get('/fades', (req, res) => {
 	const userId = req.query.userId
-	res.render('fades.ejs', { userId: userId, fades: fades, currentPage: "fades" })
+	res.render('fades.ejs', { userId, fades, currentPage: "fades" })
 })
 
 app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
@@ -164,6 +167,7 @@ app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
 		},
 		weight: req.body.weight, // lbs
 		birthday: new Date(req.body.birthday),
+		likes: [1, 4], // fake likes to seed the demo
 	}
 
 	// why do we write this if statement?
