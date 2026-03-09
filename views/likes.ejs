@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FADEFINDER - fades</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="main.js"></script>
+</head>
+
+<body>
+	<%- include("parts/navbar", {currentPage: currentPage}) %>
+		<section id="likes">
+			<h1>likes</h1>
+			<div class="like-scroller">
+				<% for(let profile of profiles){ %>
+
+					<%- include("parts/profile-card", { profile: like }) %>
+						<br>
+						<% } %>
+			</div>
+
+		</section>
+
+</body>
+
+</html>

@@ -10,7 +10,50 @@
 </head>
 
 <body>
-	<a href="/match"><button>FIND FADES</button></a>
+	<form method="post" action="/signup" enctype="multipart/form-data">
+		<section>
+			<h2>Basics</h2>
+			<label>First name
+				<input type="text" name="firstName" id="firstName" placeholder="Jerry" required>
+			</label>
+			<label>Birthday
+				<input type="date" name="birthday" id="birthday" required>
+			</label>
+			<label>Profile image
+				<input type="file" name="profileImage" id="profileImage" required>
+			</label>
+			<label>Height: <select name="heightFeet" id="heightFeet" required>
+					<option value=""> </option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+				</select> ft <select name="heightIn" id="heightIn" required>
+					<option value=""> </option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+				</select> in
+			</label>
+			<label>Weight
+				<input type="number" name="weight" id="weight" placeholder="135" required> lbs
+			</label>
+		</section>
+
+		<button type="submit">FIND FADES</button>
+	</form>
 </body>
 
 </html>

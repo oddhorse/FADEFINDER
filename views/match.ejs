@@ -11,7 +11,7 @@
 
 <body>
 	<%- include("parts/navbar") %>
-		<% for(let profile of profiles){ %>
+		<% for(let [id, profile] of profiles){ %>
 
 			<%- include("parts/profile-card", { profile: profile }) %>
 				<br>

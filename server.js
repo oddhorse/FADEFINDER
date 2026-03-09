@@ -11,10 +11,21 @@ app.use(Express.static('public'))
 app.use(Express.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 
+/**
+ * gets age from birthdate
+ * @param {Date} birthDateObj Date obj representing birthdate
+ */
+const getAgeFromDate = (birthDateObj) => {
+	// https://www.w3resource.com/javascript-exercises/javascript-date-exercise-18.php
+	let ageDate = new Date(Date.now() - birthDateObj.valueOf())
+	let age = ageDate.getUTCFullYear() - 1970
+	return age
+}
+
 // global array to store all posts
 let posts = []
 
-let profiles = [
+const starterProfiles = [
 	{
 		id: 0,
 		name: "Danny",
@@ -23,7 +34,7 @@ let profiles = [
 			in: 9
 		},
 		weight: 155, // lbs
-		age: 29,
+		birthday: new Date("1995-11-23"),
 		image: "example/1.jpeg",
 	},
 	{
@@ -34,7 +45,7 @@ let profiles = [
 			in: 9
 		},
 		weight: 167, // lbs
-		age: 34,
+		birthday: new Date("1992-12-03"),
 		image: "example/2.jpeg",
 	},
 	{
@@ -45,7 +56,7 @@ let profiles = [
 			in: 6
 		},
 		weight: 143, // lbs
-		age: 42,
+		birthday: new Date("1970-04-10"),
 		image: "example/3.jpeg",
 	},
 	{
@@ -56,7 +67,7 @@ let profiles = [
 			in: 3
 		},
 		weight: 121, // lbs
-		age: 19,
+		birthday: new Date("2006-01-02"),
 		image: "example/4.jpeg",
 	},
 	{
@@ -67,7 +78,7 @@ let profiles = [
 			in: 1
 		},
 		weight: 207, // lbs
-		age: 55,
+		birthday: new Date("1968-11-09"),
 		image: "example/5.jpeg",
 	},
 	{
@@ -78,7 +89,7 @@ let profiles = [
 			in: 5
 		},
 		weight: 140, // lbs
-		age: 53,
+		birthday: new Date("1970-12-17"),
 		image: "example/6.jpeg",
 	},
 	{
@@ -89,16 +100,22 @@ let profiles = [
 			in: 5
 		},
 		weight: 139, // lbs
-		age: 23,
+		birthday: new Date("2002-06-21"),
 		image: "example/7.jpeg",
 	},
 ]
 
+let profiles = new Map()
+for (const profile of starterProfiles) {
+	profiles.set(profile.id, profile)
+	console.log(profiles.get(0))
+}
+
 let fades = [
 	{
 		id: 0,
-		instigator: profiles[0],
-		opponent: profiles[1],
+		instigator: profiles.get(0),
+		opponent: profiles.get(1),
 		time: new Date(),
 		humanTime: new Date().toDateString(),
 		winner: 0,
@@ -110,23 +127,44 @@ app.get('/', (req, res) => {
 	res.render('index.ejs', { allPosts: posts, currentPage: "index" })
 })
 app.get('/match', (req, res) => {
-	res.render('match.ejs', { profiles: profiles, currentPage: "match" })
+	res.render('match.ejs', { profiles: profiles, getAgeFromDate, currentPage: "match" })
+})
+app.get('/likes', (req, res) => {
+	res.render('likes.ejs', { fades: fades, currentPage: "fades" })
 })
 app.get('/fades', (req, res) => {
 	res.render('fades.ejs', { fades: fades, currentPage: "fades" })
 })
 
-// second param on post handler to process file that's uploaded
-app.post('/makePost', uploadProcessor.single('myImage'), (req, res) => {
-	let individualPost = {
-		caption: req.body.caption
+app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
+	const birthday = new Date(req.body.birthday)
+
+	console.log(getAgeFromDate(birthday))
+
+	// what type of data structure is this?
+	// A: object
+	let data = {
+		id: profiles.size,
+		name: req.body.firstName,
+		height: {
+			ft: req.body.heightFeet,
+			in: req.body.heightIn
+		},
+		weight: req.body.weight, // lbs
+		birthday: new Date(req.body.birthday),
 	}
+
+	// why do we write this if statement?
+	// A: image is not required; we only should handle it if it's present
 	if (req.file) {
-		individualPost.file = req.file.filename
+		data.image = '/uploads/' + req.file.filename
 	}
-	console.log(individualPost)
-	posts.push(individualPost)
-	res.redirect('/')
+
+	// what does the push function do?
+	// A: adds an item to back of array
+	profiles.set(profiles.size, data)
+
+	res.redirect(`/match?userId=${data.id}`)
 })
 
 // listen on port

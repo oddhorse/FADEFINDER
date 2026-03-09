@@ -10,7 +10,7 @@ body {
 	/* align-items: center; */
 }
 
-form {
+form section {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -53,6 +53,7 @@ form {
 	transition: all 60ms;
 }
 
+/* https://atendesigngroup.com/articles/do-more-less-aria-use-common-aria-correctly */
 #navbar a:hover,
 #navbar a[aria-current="page"] {
 	/* outline: red solid 3px; */
