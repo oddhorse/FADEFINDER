@@ -198,10 +198,18 @@ form section {
 
 .profile-card>.profile-name {
 	margin: 0;
-	padding: var(--card-padding-amt);
-	padding-bottom: calc(var(--card-padding-amt) * 2);
+	/* padding: var(--card-padding-amt);
+	padding-bottom: calc(var(--card-padding-amt) * 2); */
 	/* https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Images/Using_gradients */
-	background-image: linear-gradient(to bottom, white, #0000);
+	/* phasing out gradient in favor of shaderoom aesthetics */
+	/* background-image: linear-gradient(to bottom, white, #0000); */
+
+	background-color: peachpuff;
+	margin: 10px auto;
+
+	padding: 10px 2px;
+	border-radius: 20px;
+
 	grid-area: 1/1/2/2;
 	display: inline;
 	align-self: start;
