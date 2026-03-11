@@ -120,6 +120,7 @@ let fades = [
 		time: new Date(),
 		loc: "Washington Square Park",
 		winner: 0,
+		confirmed: true,
 	}
 ]
 
@@ -186,15 +187,25 @@ app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
 app.post('/sendlike', (req, res) => {
 	console.log(req.body)
 	const sender = profiles.get(Number(req.body.senderId))
-	console.log(sender)
+	if (!sender) return
+	// console.log(sender)
 	const recipient = profiles.get(Number(req.body.recipientId))
 	console.log(
 		`like sent by user ${sender.name} (id ${sender.id})
-		for user ${recipient.name} (id ${recipient.id})!`)
+		for user ${recipient.name} (id ${recipient.id})!
+		proposed time is ${new Date(req.body.time)}.
+		attached message is "${req.body.msg}"`)
 
-	// add sender's id to recipient's likes
-	if (!recipient.likes) recipient.likes = []
-	recipient.likes.push(Number(req.body.senderId))
+	const fade = {
+		id: fades.length,
+		instigator: sender,
+		opponent: recipient,
+		time: new Date(req.body.time),
+		loc: req.body.msg,
+		winner: 0,
+		confirmed: false,
+	}
+	fades.push(fade)
 
 	console.log(recipient)
 

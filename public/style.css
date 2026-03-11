@@ -235,12 +235,33 @@ form section {
 	-webkit-text-stroke: 1.5px rgb(255, 255, 255);
 }
 
-.like-dislike-btns {
+.like-dislike-btns {}
+
+
+.like-msg-box {
 	display: flex;
-	/* width: var(--card-width); */
-	justify-content: space-between;
+	flex-direction: column;
+	width: 100%;
+	padding: 10px;
+	justify-self: center;
+	border-radius: var(--border-radius);
+	z-index: 1;
+	font-size: 20px;
+	box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
 
 }
+
+.like-msg-box[hidden] {
+	/* display: none; */
+	opacity: 0%;
+	pointer-events: none;
+}
+
+.like-msg-box input {
+	display: inline-flex;
+
+}
+
 
 .like-dislike-btns button {
 	/* width: 50%; */

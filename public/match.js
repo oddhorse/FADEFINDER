@@ -4,6 +4,8 @@ window.addEventListener('load', () => {
 	const passedUserId = params.get("userId")
 
 	const sendLike = async (recipientId) => {
+		const fadetime = document.getElementById(`fadetime-${recipientId}`)
+		const likemsg = document.getElementById(`likemsg-${recipientId}`)
 		const response = await fetch("/sendlike", {
 			method: 'POST',
 			headers: {
@@ -12,7 +14,9 @@ window.addEventListener('load', () => {
 			},
 			body: JSON.stringify({
 				'recipientId': recipientId,
-				'senderId': passedUserId
+				'senderId': passedUserId,
+				'time': fadetime.value,
+				'msg': likemsg.value
 			}),
 		})
 		console.log("sent to server!")
@@ -62,6 +66,11 @@ window.addEventListener('load', () => {
 		}
 	}
 
+	const showLikeMsgBox = (id) => {
+		const box = document.getElementById(`like-msg-box-${id}`)
+		box.removeAttribute("hidden")
+	}
+
 	const likeButtons = document.getElementsByClassName("like-btn")
 	if (likeButtons) {
 		for (const button of likeButtons) {
@@ -69,21 +78,41 @@ window.addEventListener('load', () => {
 			console.log(userId)
 			button.addEventListener("click", () => {
 				console.log(`like btn for userId ${userId} clicked!`)
-				sendLike(userId)
-				nextProfile()
+				showLikeMsgBox(userId)
+				// sendLike(userId)
+				// nextProfile()
 			})
 		}
 
 	}
 
 	const dislikeButtons = document.getElementsByClassName("dislike-btn")
-	if (likeButtons) {
+	if (dislikeButtons) {
 		for (const button of dislikeButtons) {
 			const userId = button.parentElement.getAttribute("data-userid")
 			console.log(userId)
 			button.addEventListener("click", () => {
 				console.log(`dislike btn for userId ${userId} clicked!`)
 				nextProfile()
+			})
+		}
+
+	}
+
+	const submitButtons = document.getElementsByClassName("submit-btn")
+	if (submitButtons) {
+		for (const button of submitButtons) {
+			const userId = button.parentElement.getAttribute("data-userid")
+			console.log(userId)
+			const fadetime = document.getElementById(`fadetime-${userId}`)
+			const likemsg = document.getElementById(`likemsg-${userId}`)
+			button.addEventListener("click", () => {
+				if (fadetime.validity.valid && likemsg.validity.valid) {
+					sendLike(userId)
+					console.log(`submit btn for userId ${userId} clicked!`)
+					nextProfile()
+				}
+
 			})
 		}
 
