@@ -124,6 +124,15 @@ form section {
 
 .card-container {
 	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	/* align-items: stretch; */
+	align-items: center;
+}
+
+.card-container[hidden] {
+	display: none;
+
 }
 
 .card-container.match {
@@ -232,10 +241,8 @@ form section {
 	margin: 0;
 	width: 100%;
 	color: white;
-	-webkit-text-stroke: 1.5px rgb(255, 255, 255);
+	-webkit-text-stroke: 1px rgb(255, 255, 255);
 }
-
-.like-dislike-btns {}
 
 
 .like-msg-box {
@@ -262,6 +269,15 @@ form section {
 
 }
 
+.like-dislike-btns {
+	display: flex;
+	justify-content: space-between;
+}
+
+.card-container.fades .like-dislike-btns {
+	width: 80%;
+}
+
 
 .like-dislike-btns button {
 	/* width: 50%; */
@@ -285,7 +301,7 @@ form section {
 }
 
 /* different styling for likes page */
-.card-container.likes .like-dislike-btns button {
+.card-container.fades .like-dislike-btns button {
 	font-size: 17px;
 	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
 }
@@ -320,10 +336,20 @@ form section {
 	gap: 40px;
 }
 
+/* FADE PAGE */
+
+.fade-scroller {
+	display: flex;
+	gap: 10px;
+}
+
+#fade-requests .fade-scroller {
+	gap: 10px;
+}
 
 .fade-card {
 	width: 300px;
-	aspect-ratio: 3 / 2;
+	/* aspect-ratio: 5 / 4; */
 
 	/* border: 2px solid #000; */
 	border-radius: 5px;
@@ -341,6 +367,8 @@ form section {
 	transition:
 		width 150ms,
 		height 150ms;
+
+	outline: black 2px solid;
 }
 
 .fade-card.expanded {
@@ -379,10 +407,10 @@ form section {
 .fade-card>.fade-stats {
 	padding: var(--card-padding-amt);
 	padding-top: calc(var(--card-padding-amt) * 2);
-	grid-area: 2/1/2/3;
+	grid-area: 3/1/4/3;
 	display: inline;
 	align-self: end;
-	background-image: linear-gradient(to top, black, #0000);
+	/* background-image: linear-gradient(to top, black, #0000); */
 
 }
 
@@ -390,5 +418,10 @@ form section {
 .fade-card h2 {
 	margin: 0;
 	width: 100%;
-	color: white;
+	color: rgb(0, 0, 0);
+	-webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+
+.fade-card h2 {
+	text-align: center;
 }

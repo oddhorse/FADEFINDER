@@ -121,8 +121,29 @@ let fades = [
 		loc: "Washington Square Park",
 		winner: 0,
 		confirmed: true,
+		denied: false,
 	}
 ]
+
+const filterFadeRequests = (fade, userId) => {
+	if (
+		fade.opponent.id === Number(userId) &&
+		fade.confirmed === false &&
+		fade.denied === false &&
+		fade.time.valueOf() > Date.now() // if fade request is for already-passed time, kill it!
+	) return true
+	else return false
+}
+
+const filterUpcomingFades = (fade, userId) => {
+	if (
+		fade.opponent.id === Number(userId) &&
+		fade.confirmed === true &&
+		fade.denied === false &&
+		fade.time.valueOf() > Date.now() // if fade request is for already-passed time, kill it!
+	) return true
+	else return false
+}
 
 // routes
 app.get('/', (req, res) => {
@@ -149,7 +170,7 @@ app.get('/likes', (req, res) => {
 })
 app.get('/fades', (req, res) => {
 	const userId = req.query.userId
-	res.render('fades.ejs', { userId, fades, currentPage: "fades" })
+	res.render('fades.ejs', { userId, fades, currentPage: "fades", filterFadeRequests, filterUpcomingFades })
 })
 
 app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
@@ -168,7 +189,6 @@ app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
 		},
 		weight: req.body.weight, // lbs
 		birthday: new Date(req.body.birthday),
-		likes: [1, 4], // fake likes to seed the demo
 	}
 
 	// why do we write this if statement?
@@ -180,6 +200,30 @@ app.post('/signup', uploadProcessor.single('profileImage'), (req, res) => {
 	// what does the push function do?
 	// A: adds an item to back of array
 	profiles.set(profiles.size, data)
+
+	// add some example fade requests
+	fades.push(
+		{
+			id: fades.length,
+			instigator: profiles.get(3),
+			opponent: profiles.get(data.id),
+			time: new Date(Date.now() + 500000000), // now + like uhhh 4 or 5 days??
+			loc: "Washington Square Park",
+			winner: 0,
+			confirmed: false,
+			denied: false,
+		},
+		{
+			id: fades.length + 1,
+			instigator: profiles.get(6),
+			opponent: profiles.get(data.id),
+			time: new Date(Date.now() + 864000000), // now + 10 days
+			loc: "Muji Union Square",
+			winner: 0,
+			confirmed: false,
+			denied: false,
+		}
+	)
 
 	res.redirect(`/match?userId=${data.id}`)
 })
@@ -204,10 +248,26 @@ app.post('/sendlike', (req, res) => {
 		loc: req.body.msg,
 		winner: 0,
 		confirmed: false,
+		denied: false,
 	}
 	fades.push(fade)
 
 	console.log(recipient)
+
+	res.send({ "status": "success" })
+})
+
+app.post('/answerfade', (req, res) => {
+	console.log(req.body)
+	console.log(
+		`fade request with id ${req.body.fadeId} answered!
+		answer is ${req.body.answer}`)
+
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+	const fadeInQuestion = fades.find((fade) => fade.id === Number(req.body.fadeId))
+	console.log(fadeInQuestion)
+	if (req.body.answer === true) fadeInQuestion.confirmed = true
+	else fadeInQuestion.denied = true
 
 	res.send({ "status": "success" })
 })

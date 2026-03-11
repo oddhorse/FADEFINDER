@@ -7,18 +7,40 @@
 	<title>FADEFINDER - fades</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="main.js"></script>
+	<script src="fades.js"></script>
 </head>
 
 <body>
 	<%- include("parts/navbar", {currentPage: currentPage}) %>
+		<section id="fade-requests">
+			<h1>Fade Requests</h1>
+			<div class="fade-scroller">
+				<% for(let fade of fades){ %>
+
+
+					<% if (!filterFadeRequests(fade, userId)) continue %>
+						<div class="card-container fades" id="fade-container-id-<%= fade.id %>">
+							<%- include("parts/fade-card", { fade: fade }) %>
+
+								<div class="like-dislike-btns" data-fadeid="<%= fade.id %>">
+									<button class="dislike-btn">🙅‍♂️🙅‍♂️ Pass</button>
+									<button class="like-btn">🥊 Scrap</button>
+								</div>
+						</div>
+						<% } %>
+
+			</div>
+
+		</section>
 		<section id="upcoming-fades">
 			<h1>Upcoming Fades</h1>
 			<div class="fade-scroller">
 				<% for(let fade of fades){ %>
+					<!-- filters to only confirmed fades against you -->
+					<% if (!filterUpcomingFades(fade, userId)) continue %>
 
-					<%- include("parts/fade-card", { fade: fade }) %>
-						<br>
-						<% } %>
+						<%- include("parts/fade-card", { fade: fade }) %>
+							<% } %>
 			</div>
 
 		</section>
