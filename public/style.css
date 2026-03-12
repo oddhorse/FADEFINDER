@@ -113,6 +113,10 @@ body {
 
 #body-start {
 	height: calc(100vh - 100px);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #body-start form section {
@@ -152,12 +156,6 @@ body {
 #body-start select:hover,
 #body-start button:hover {
 	scale: 102%;
-}
-
-#body-start {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 }
 
 #body-start label,
@@ -451,7 +449,17 @@ body {
 	z-index: 1;
 	font-size: 20px;
 	box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+	background-color: white;
 
+	gap: 10px;
+
+}
+
+.like-msg-box button {
+	cursor: pointer;
+	background-color: red;
+	font-size: 16px;
+	color: white;
 }
 
 .like-msg-box[hidden] {
@@ -460,10 +468,71 @@ body {
 	pointer-events: none;
 }
 
+.card-container {
+	transition: translate 75ms;
+}
+
+/* new conditional styling!!! */
+.card-container:has(.like-msg-box[hidden]) {
+	translate: -50% -40%;
+}
+
 .like-msg-box input {
 	display: inline-flex;
-
+	font-size: 16px;
 }
+
+.like-msg-box label {
+	font-size: 16px;
+}
+
+
+.like-msg-box label,
+.like-msg-box input,
+.like-msg-box button {
+	transition: all 50ms;
+}
+
+.like-msg-box label:hover {
+	scale: 100.5%;
+}
+
+.like-msg-box input:hover,
+.like-msg-box button:hover {
+	scale: 102%;
+}
+
+.like-msg-box label,
+.like-msg-box input {
+	font-size: 20px;
+	-webkit-text-stroke: 0.75px rgb(0, 0, 0);
+}
+
+.like-msg-box button {
+	cursor: pointer;
+	font-weight: bold;
+	background-color: red;
+	padding: 10px;
+	color: white;
+	font-size: 18px;
+	-webkit-text-stroke: 1px rgb(255, 255, 255);
+
+	margin: auto;
+	border: none;
+	border-radius: 10px;
+}
+
+.like-msg-box button:hover {
+	color: red;
+	background-color: white;
+	-webkit-text-stroke: 1px rgb(255, 0, 0);
+	outline: red 3px solid;
+}
+
+
+
+
+
 
 .like-dislike-btns {
 	display: flex;
