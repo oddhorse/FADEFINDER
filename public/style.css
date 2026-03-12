@@ -37,6 +37,9 @@ body {
 	/* align-items: center; */
 
 	padding: 20px;
+	background-image: url(bg2.jpg);
+
+
 }
 
 
@@ -45,7 +48,7 @@ form section {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 60%;
+	/* width: 60%; */
 	gap: 10px;
 }
 
@@ -91,7 +94,48 @@ form section {
 	background-color: red;
 	padding: 10px;
 	color: white;
+	border-radius: 5px;
+	-webkit-text-stroke: 2px rgb(255, 255, 255);
 }
+
+#catch-a-fade:hover {
+	color: red;
+	background-color: white;
+	-webkit-text-stroke: 2px red;
+}
+
+/* START PAGE */
+
+#body-start {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#body-start label,
+#body-start input,
+#body-start select {
+	font-size: 20px;
+	-webkit-text-stroke: 0.75px rgb(0, 0, 0);
+}
+
+#body-start button {
+	cursor: pointer;
+	font-weight: bold;
+	background-color: red;
+	padding: 10px;
+	color: white;
+	font-size: 30px;
+	-webkit-text-stroke: 1px rgb(255, 255, 255);
+}
+
+#body-start h2 {
+	font-size: 32px;
+	align-self: center;
+	-webkit-text-stroke: 1px rgb(0, 0, 0);
+}
+
+
 
 /* NAVBAR */
 

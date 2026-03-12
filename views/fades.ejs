@@ -38,9 +38,10 @@
 				<% for(let fade of fades){ %>
 					<!-- filters to only confirmed fades against you -->
 					<% if (!filterUpcomingFades(fade, userId)) continue %>
-
-						<%- include("parts/fade-card", { fade: fade }) %>
-							<% } %>
+						<div class="card-container fades">
+							<%- include("parts/fade-card", { fade: fade }) %>
+						</div>
+						<% } %>
 			</div>
 
 		</section>

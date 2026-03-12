@@ -9,20 +9,20 @@
 	<script src="main.js"></script>
 </head>
 
-<body>
-	<form method="post" action="/signup" enctype="multipart/form-data">
+<body id="body-start">
+	<form method="post" action="/signup" enctype="multipart/form-data" id="onboard">
 		<section>
-			<h2>Basics</h2>
-			<label>First name
+			<h2>🕵️‍♂️ Make A Profile</h2>
+			<label>🪪 First Name
 				<input type="text" name="firstName" id="firstName" placeholder="Jerry" required>
 			</label>
-			<label>Birthday
+			<label>🥳 Birthday
 				<input type="date" name="birthday" id="birthday" required>
 			</label>
-			<label>Profile image
+			<label>🤳 Profile Image
 				<input type="file" name="profileImage" id="profileImage" required>
 			</label>
-			<label>Height: <select name="heightFeet" id="heightFeet" required>
+			<label>📏 Height: <select name="heightFeet" id="heightFeet" required>
 					<option value=""> </option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -47,13 +47,13 @@
 					<option value="11">11</option>
 				</select> in
 			</label>
-			<label>Weight
+			<label>⚖️ Weight
 				<input type="number" name="weight" id="weight" placeholder="135" required> lbs
 			</label>
 		</section>
-
-		<button type="submit">FIND FADES</button>
+		<br>
 	</form>
+	<button type="submit" form="onboard">🥊 LET'S FIGHT</button>
 </body>
 
 </html>
