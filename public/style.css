@@ -35,6 +35,8 @@ body {
 	padding: 20px;
 }
 
+
+
 form section {
 	display: flex;
 	flex-direction: column;
@@ -42,6 +44,51 @@ form section {
 	width: 60%;
 	gap: 10px;
 }
+
+/* HOMEPAGE */
+
+#body-home {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#body-home #bgvid {
+	z-index: -2;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+#body-home #bgshader {
+	background-color: black;
+	opacity: 0.3;
+	z-index: -1;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+#home-logo {
+	height: 50%;
+	width: auto;
+}
+
+#catch-a-fade {
+	z-index: 1;
+	translate: 0 -50px;
+}
+
+#catch-a-fade button {
+	font-size: 30px;
+	cursor: pointer;
+}
+
+/* NAVBAR */
 
 #navbar {
 	position: fixed;

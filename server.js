@@ -147,8 +147,13 @@ const filterUpcomingFades = (fade, userId) => {
 
 // routes
 app.get('/', (req, res) => {
-	res.render('index.ejs', { allPosts: posts, currentPage: "index" })
+	res.render('index.ejs', { currentPage: "index" })
 })
+
+app.get('/start', (req, res) => {
+	res.render('start.ejs', { currentPage: "start" })
+})
+
 app.get('/match', (req, res) => {
 	const userId = req.query.userId
 	res.render('match.ejs', { userId, profiles, getAgeFromDate, currentPage: "match" })
