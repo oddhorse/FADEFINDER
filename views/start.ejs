@@ -10,50 +10,53 @@
 </head>
 
 <body id="body-start">
-	<form method="post" action="/signup" enctype="multipart/form-data" id="onboard">
-		<section>
-			<h2>🕵️‍♂️ Make A Profile</h2>
-			<label>🪪 First Name
-				<input type="text" name="firstName" id="firstName" placeholder="Jerry" required>
-			</label>
-			<label>🥳 Birthday
-				<input type="date" name="birthday" id="birthday" required>
-			</label>
-			<label>🤳 Profile Image
-				<input type="file" name="profileImage" id="profileImage" required>
-			</label>
-			<label>📏 Height: <select name="heightFeet" id="heightFeet" required>
-					<option value=""> </option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-				</select> ft <select name="heightIn" id="heightIn" required>
-					<option value=""> </option>
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-				</select> in
-			</label>
-			<label>⚖️ Weight
-				<input type="number" name="weight" id="weight" placeholder="135" required> lbs
-			</label>
-		</section>
-		<br>
-	</form>
-	<button type="submit" form="onboard">🥊 LET'S FIGHT</button>
+	<div id="body-container">
+		<form method="post" action="/signup" enctype="multipart/form-data" id="onboard">
+			<section>
+				<h2>🕵️‍♂️ Make A Profile</h2>
+				<label>🪪 First Name
+					<input type="text" name="firstName" id="firstName" placeholder="Jerry" required>
+				</label>
+				<label>🥳 Birthday
+					<input type="date" name="birthday" id="birthday" required>
+				</label>
+				<label>🤳 Profile Image
+					<input type="file" name="profileImage" id="profileImage" required>
+				</label>
+				<label>📏 Height: <select name="heightFeet" id="heightFeet" required>
+						<option value=""> </option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+					</select> ft <select name="heightIn" id="heightIn" required>
+						<option value=""> </option>
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+					</select> in
+				</label>
+				<label>⚖️ Weight
+					<input type="number" name="weight" id="weight" placeholder="135" required> lbs
+				</label>
+			</section>
+			<br>
+		</form>
+		<button type="submit" form="onboard">🥊 LET'S FIGHT</button>
+	</div>
+	<img id="corner-logo" src="fadefinder-inline.png" alt="fadefinder logo">
 </body>
 
 </html>

@@ -10,10 +10,13 @@
 	<script src="fades.js"></script>
 </head>
 
-<body>
+<body id="body-fades">
 	<%- include("parts/navbar", {currentPage: currentPage}) %>
 		<section id="fade-requests">
-			<h1>Fade Requests</h1>
+			<div class="header-box"><img src="fadefinder-inline.png" alt="fadefinder logo">
+				<h1>Fade Requests</h1>
+			</div>
+
 			<div class="fade-scroller">
 				<% for(let fade of fades){ %>
 
@@ -33,7 +36,10 @@
 
 		</section>
 		<section id="upcoming-fades">
-			<h1>Upcoming Fades</h1>
+			<div class="header-box"><img src="fadefinder-inline.png" alt="fadefinder logo">
+				<h1>Upcoming Fades</h1>
+			</div>
+
 			<div class="fade-scroller">
 				<% for(let fade of fades){ %>
 					<!-- filters to only confirmed fades against you -->
@@ -44,8 +50,8 @@
 						<% } %>
 			</div>
 
-		</section>
 
+			<img id="corner-logo" src="fadefinder-inline.png" alt="fadefinder logo">
 </body>
 
 </html>

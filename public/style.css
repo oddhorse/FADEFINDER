@@ -19,11 +19,20 @@ h1 {
 		0.5px -0.5px 0 #000,
 		-0.5px 0.5px 0 #000,
 		0.5px 0.5px 0 #000; */
+	margin: 0;
+
+}
+
+.header-box {
 	background-color: coral;
 	padding: 10px 2px;
 	border-radius: 20px;
 	width: fit-content;
+	display: flex;
+	align-items: center;
 }
+
+.header-box img {}
 
 p {
 	-webkit-text-stroke: 1.5px rgb(0, 0, 0);
@@ -42,19 +51,9 @@ body {
 	/* align-items: center; */
 
 	padding: 20px;
-	background-image: url(bg-tile.png);
+	/* background-image: url(bg-tile.png); */
 
-	background-color: #f5f5f5;
-}
-
-
-
-form section {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	/* width: 60%; */
-	gap: 10px;
+	/* background-color: #f5f5f5; */
 }
 
 /* HOMEPAGE */
@@ -65,7 +64,7 @@ form section {
 	align-items: center;
 }
 
-#body-home #bgvid {
+#bgvid {
 	z-index: -2;
 	position: fixed;
 	right: 0;
@@ -74,15 +73,16 @@ form section {
 	min-height: 100%;
 }
 
-#body-home #bgshader {
+#bgshader {
 	background-color: black;
-	opacity: 0.2;
+	opacity: 0.25;
 	z-index: -1;
 	position: fixed;
 	right: 0;
 	bottom: 0;
 	min-width: 100%;
 	min-height: 100%;
+	/* background-image: url("/bg-tile-full-opacity.png") */
 }
 
 #home-logo {
@@ -112,6 +112,49 @@ form section {
 /* START PAGE */
 
 #body-start {
+	height: calc(100vh - 100px);
+}
+
+#body-start form section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* width: 60%; */
+	gap: 10px;
+
+}
+
+#body-start #body-container {
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	margin: auto;
+	border-radius: 20px;
+}
+
+#body-start h2 {
+	margin: 0 0 20px 0;
+}
+
+#body-start label,
+#body-start input,
+#body-start select,
+#body-start button {
+	transition: all 50ms;
+}
+
+#body-start label:hover {
+	scale: 100.5%;
+}
+
+#body-start input:hover,
+#body-start select:hover,
+#body-start button:hover {
+	scale: 102%;
+}
+
+#body-start {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -132,6 +175,17 @@ form section {
 	color: white;
 	font-size: 30px;
 	-webkit-text-stroke: 1px rgb(255, 255, 255);
+
+	margin: auto;
+	border: none;
+	border-radius: 10px;
+}
+
+#body-start button:hover {
+	color: red;
+	background-color: white;
+	-webkit-text-stroke: 1px rgb(255, 0, 0);
+	outline: red 3px solid;
 }
 
 #body-start h2 {
@@ -223,6 +277,22 @@ form section {
 	translate: 0 -4px;
 }
 
+/* CORNER LOGO */
+
+#corner-logo {
+	position: fixed;
+	/* background-color: white; */
+	width: fit-content;
+	bottom: 25px;
+	right: 25px;
+	z-index: 10;
+	padding: 5px;
+
+	/* box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3); */
+
+	scale: 140%;
+}
+
 .card-container {
 	width: fit-content;
 	display: flex;
@@ -242,6 +312,22 @@ form section {
 	left: 50%;
 	translate: -50% -50%;
 }
+
+#body-match {
+	background-image: url(bg2.jpg);
+	background-size: 100vw 100vh;
+}
+
+#body-fades {
+	background-size: 100vw 100vh;
+	background-image: url(bg1.jpg);
+}
+
+#body-start {
+	background-size: 100vw 100vh;
+	background-image: url(bg3.jpg);
+}
+
 
 #no-more-profiles-card {
 	flex-direction: column;
@@ -298,6 +384,14 @@ form section {
 	scale: 102%;
 }
 
+.profile-card .corner-logo {
+	grid-area: 1 / 1 / 2 / 2;
+	justify-self: self-end;
+	opacity: 0.5;
+	height: 80px;
+	width: auto;
+}
+
 .profile-card>img.profile-image {
 	object-fit: cover;
 	object-position: 50% 50%;
@@ -324,6 +418,7 @@ form section {
 	display: inline;
 	align-self: start;
 	text-align: center;
+	z-index: 1;
 }
 
 .profile-card>.profile-stats {
@@ -444,6 +539,10 @@ form section {
 	gap: 10px;
 }
 
+#body-fades .header-box {
+	margin: 20px 0;
+}
+
 #fade-requests .fade-scroller {
 	gap: 10px;
 }
@@ -469,8 +568,17 @@ form section {
 		width 150ms,
 		height 150ms;
 
-	outline: black 2px solid;
+	/* outline: black 2px solid; */
 	background-color: white;
+}
+
+.fade-card .corner-logo {
+	position: absolute;
+	grid-area: 1 / 2 / 2 / 2;
+	justify-self: self-end;
+	opacity: 0.5;
+	height: 80px;
+	width: auto;
 }
 
 .fade-card.expanded {
@@ -526,4 +634,8 @@ form section {
 
 .fade-card h2 {
 	text-align: center;
+}
+
+#body-fades #fade-requests .header-box {
+	background-color: pink;
 }

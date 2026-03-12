@@ -10,9 +10,13 @@
 	<script src="match.js"></script>
 </head>
 
-<body>
+<body id="body-match">
+	<!-- <%- include("parts/bgvid") %> -->
 	<%- include("parts/navbar") %>
-		<h1>Match</h1>
+		<div class="header-box"><img src="fadefinder-inline.png" alt="fadefinder logo">
+			<h1>Match</h1>
+		</div>
+
 		<% for(let [id, profile] of profiles){ %>
 			<% if (id==userId) { continue } %>
 				<div class="card-container match" hidden>
@@ -36,9 +40,10 @@
 				<% } %>
 					<div class="card-container match" id="no-more-profiles-card" hidden>
 						<h1>🥊</h1>
-						<h2>no more opponents...</h2>
-						<p>maybe you have some likes?</p>
+						<h2>No More Profiles !</h2>
+						<p>Maybe You Have Some Fade Requests ?</p>
 					</div>
+					<img id="corner-logo" src="fadefinder-inline.png" alt="fadefinder logo">
 </body>
 
 </html>
