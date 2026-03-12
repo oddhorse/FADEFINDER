@@ -19,6 +19,10 @@ h1 {
 		0.5px -0.5px 0 #000,
 		-0.5px 0.5px 0 #000,
 		0.5px 0.5px 0 #000; */
+	background-color: coral;
+	padding: 10px 2px;
+	border-radius: 20px;
+	width: fit-content;
 }
 
 p {
@@ -27,6 +31,7 @@ p {
 
 button {
 	font-family: Helvetica;
+	font-weight: bold;
 }
 
 body {
@@ -37,9 +42,9 @@ body {
 	/* align-items: center; */
 
 	padding: 20px;
-	background-image: url(bg2.jpg);
+	background-image: url(bg-tile.png);
 
-
+	background-color: #f5f5f5;
 }
 
 
@@ -71,7 +76,7 @@ form section {
 
 #body-home #bgshader {
 	background-color: black;
-	opacity: 0.3;
+	opacity: 0.2;
 	z-index: -1;
 	position: fixed;
 	right: 0;
@@ -95,7 +100,7 @@ form section {
 	padding: 10px;
 	color: white;
 	border-radius: 5px;
-	-webkit-text-stroke: 2px rgb(255, 255, 255);
+	/* -webkit-text-stroke: 2px rgb(255, 255, 255); */
 }
 
 #catch-a-fade:hover {
@@ -465,6 +470,7 @@ form section {
 		height 150ms;
 
 	outline: black 2px solid;
+	background-color: white;
 }
 
 .fade-card.expanded {
