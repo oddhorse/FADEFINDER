@@ -1,5 +1,5 @@
 :root {
-	font-family: 'Times New Roman';
+	font-family: Helvetica;
 
 	--card-width: 300px;
 
@@ -23,6 +23,10 @@ h1 {
 
 p {
 	-webkit-text-stroke: 1.5px rgb(0, 0, 0);
+}
+
+button {
+	font-family: Helvetica;
 }
 
 body {
@@ -80,12 +84,13 @@ form section {
 
 #catch-a-fade {
 	z-index: 1;
-	translate: 0 -50px;
-}
-
-#catch-a-fade button {
-	font-size: 30px;
+	translate: 0 -70px;
+	font-size: 40px;
 	cursor: pointer;
+	font-weight: bold;
+	background-color: red;
+	padding: 10px;
+	color: white;
 }
 
 /* NAVBAR */
